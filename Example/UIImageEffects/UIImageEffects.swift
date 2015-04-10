@@ -171,7 +171,7 @@ public extension UIImage {
                 let height = CGBitmapContextGetHeight(context)
                 let rowBytes = CGBitmapContextGetBytesPerRow(context)
                 
-                return vImage_Buffer(data: data, height: height, width: width, rowBytes: rowBytes)
+                return vImage_Buffer(data: data, height: UInt(height), width: UInt(width), rowBytes: rowBytes)
             }
             
             UIGraphicsBeginImageContextWithOptions(size, false, screenScale)
