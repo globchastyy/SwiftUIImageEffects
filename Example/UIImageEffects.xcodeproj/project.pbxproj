@@ -101,6 +101,7 @@
 		1198FE6C19C813930006983C /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 0700;
 				LastUpgradeCheck = 0600;
 				ORGANIZATIONNAME = "Alexey Globchastyy";
 				TargetAttributes = {
@@ -289,6 +290,7 @@
 				1198FE9519C813930006983C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
