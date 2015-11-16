@@ -181,13 +181,13 @@ public extension UIImage {
             CGContextTranslateCTM(effectInContext, 0, -size.height)
             CGContextDrawImage(effectInContext, imageRect, self.CGImage)
             
-            var effectInBuffer = createEffectBuffer(effectInContext)
+            var effectInBuffer = createEffectBuffer(effectInContext!)
 
             
             UIGraphicsBeginImageContextWithOptions(size, false, screenScale)
             let effectOutContext = UIGraphicsGetCurrentContext()
             
-            var effectOutBuffer = createEffectBuffer(effectOutContext)
+            var effectOutBuffer = createEffectBuffer(effectOutContext!)
             
             
             if hasBlur {
