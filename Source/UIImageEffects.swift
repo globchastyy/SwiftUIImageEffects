@@ -1,97 +1,97 @@
 /*
-File: UIImage+ImageEffects.m
-Abstract: This is a category of UIImage that adds methods to apply blur and tint effects to an image. This is the code you’ll want to look out to find out how to use vImage to efficiently calculate a blur.
-Version: 1.0
+ File: UIImage+ImageEffects.m
+ Abstract: This is a category of UIImage that adds methods to apply blur and tint effects to an image. This is the code you’ll want to look out to find out how to use vImage to efficiently calculate a blur.
+ Version: 1.0
 
-Disclaimer: IMPORTANT:  This Apple software is supplied to you by Apple
-Inc. ("Apple") in consideration of your agreement to the following
-terms, and your use, installation, modification or redistribution of
-this Apple software constitutes acceptance of these terms.  If you do
-not agree with these terms, please do not use, install, modify or
-redistribute this Apple software.
+ Disclaimer: IMPORTANT:  This Apple software is supplied to you by Apple
+ Inc. ("Apple") in consideration of your agreement to the following
+ terms, and your use, installation, modification or redistribution of
+ this Apple software constitutes acceptance of these terms.  If you do
+ not agree with these terms, please do not use, install, modify or
+ redistribute this Apple software.
 
-In consideration of your agreement to abide by the following terms, and
-subject to these terms, Apple grants you a personal, non-exclusive
-license, under Apple's copyrights in this original Apple software (the
-"Apple Software"), to use, reproduce, modify and redistribute the Apple
-Software, with or without modifications, in source and/or binary forms;
-provided that if you redistribute the Apple Software in its entirety and
-without modifications, you must retain this notice and the following
-text and disclaimers in all such redistributions of the Apple Software.
-Neither the name, trademarks, service marks or logos of Apple Inc. may
-be used to endorse or promote products derived from the Apple Software
-without specific prior written permission from Apple.  Except as
-expressly stated in this notice, no other rights or licenses, express or
-implied, are granted by Apple herein, including but not limited to any
-patent rights that may be infringed by your derivative works or by other
-works in which the Apple Software may be incorporated.
+ In consideration of your agreement to abide by the following terms, and
+ subject to these terms, Apple grants you a personal, non-exclusive
+ license, under Apple's copyrights in this original Apple software (the
+ "Apple Software"), to use, reproduce, modify and redistribute the Apple
+ Software, with or without modifications, in source and/or binary forms;
+ provided that if you redistribute the Apple Software in its entirety and
+ without modifications, you must retain this notice and the following
+ text and disclaimers in all such redistributions of the Apple Software.
+ Neither the name, trademarks, service marks or logos of Apple Inc. may
+ be used to endorse or promote products derived from the Apple Software
+ without specific prior written permission from Apple.  Except as
+ expressly stated in this notice, no other rights or licenses, express or
+ implied, are granted by Apple herein, including but not limited to any
+ patent rights that may be infringed by your derivative works or by other
+ works in which the Apple Software may be incorporated.
 
-The Apple Software is provided by Apple on an "AS IS" basis.  APPLE
-MAKES NO WARRANTIES, EXPRESS OR IMPLIED, INCLUDING WITHOUT LIMITATION
-THE IMPLIED WARRANTIES OF NON-INFRINGEMENT, MERCHANTABILITY AND FITNESS
-FOR A PARTICULAR PURPOSE, REGARDING THE APPLE SOFTWARE OR ITS USE AND
-OPERATION ALONE OR IN COMBINATION WITH YOUR PRODUCTS.
+ The Apple Software is provided by Apple on an "AS IS" basis.  APPLE
+ MAKES NO WARRANTIES, EXPRESS OR IMPLIED, INCLUDING WITHOUT LIMITATION
+ THE IMPLIED WARRANTIES OF NON-INFRINGEMENT, MERCHANTABILITY AND FITNESS
+ FOR A PARTICULAR PURPOSE, REGARDING THE APPLE SOFTWARE OR ITS USE AND
+ OPERATION ALONE OR IN COMBINATION WITH YOUR PRODUCTS.
 
-IN NO EVENT SHALL APPLE BE LIABLE FOR ANY SPECIAL, INDIRECT, INCIDENTAL
-OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
-SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
-INTERRUPTION) ARISING IN ANY WAY OUT OF THE USE, REPRODUCTION,
-MODIFICATION AND/OR DISTRIBUTION OF THE APPLE SOFTWARE, HOWEVER CAUSED
-AND WHETHER UNDER THEORY OF CONTRACT, TORT (INCLUDING NEGLIGENCE),
-STRICT LIABILITY OR OTHERWISE, EVEN IF APPLE HAS BEEN ADVISED OF THE
-POSSIBILITY OF SUCH DAMAGE.
+ IN NO EVENT SHALL APPLE BE LIABLE FOR ANY SPECIAL, INDIRECT, INCIDENTAL
+ OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+ SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+ INTERRUPTION) ARISING IN ANY WAY OUT OF THE USE, REPRODUCTION,
+ MODIFICATION AND/OR DISTRIBUTION OF THE APPLE SOFTWARE, HOWEVER CAUSED
+ AND WHETHER UNDER THEORY OF CONTRACT, TORT (INCLUDING NEGLIGENCE),
+ STRICT LIABILITY OR OTHERWISE, EVEN IF APPLE HAS BEEN ADVISED OF THE
+ POSSIBILITY OF SUCH DAMAGE.
 
-Copyright (C) 2013 Apple Inc. All Rights Reserved.
+ Copyright (C) 2013 Apple Inc. All Rights Reserved.
 
 
-Copyright © 2013 Apple Inc. All rights reserved.
-WWDC 2013 License
+ Copyright © 2013 Apple Inc. All rights reserved.
+ WWDC 2013 License
 
-NOTE: This Apple Software was supplied by Apple as part of a WWDC 2013
-Session. Please refer to the applicable WWDC 2013 Session for further
-information.
+ NOTE: This Apple Software was supplied by Apple as part of a WWDC 2013
+ Session. Please refer to the applicable WWDC 2013 Session for further
+ information.
 
-IMPORTANT: This Apple software is supplied to you by Apple Inc.
-("Apple") in consideration of your agreement to the following terms, and
-your use, installation, modification or redistribution of this Apple
-software constitutes acceptance of these terms. If you do not agree with
-these terms, please do not use, install, modify or redistribute this
-Apple software.
+ IMPORTANT: This Apple software is supplied to you by Apple Inc.
+ ("Apple") in consideration of your agreement to the following terms, and
+ your use, installation, modification or redistribution of this Apple
+ software constitutes acceptance of these terms. If you do not agree with
+ these terms, please do not use, install, modify or redistribute this
+ Apple software.
 
-In consideration of your agreement to abide by the following terms, and
-subject to these terms, Apple grants you a non-exclusive license, under
-Apple's copyrights in this original Apple software (the "Apple
-Software"), to use, reproduce, modify and redistribute the Apple
-Software, with or without modifications, in source and/or binary forms;
-provided that if you redistribute the Apple Software in its entirety and
-without modifications, you must retain this notice and the following
-text and disclaimers in all such redistributions of the Apple Software.
-Neither the name, trademarks, service marks or logos of Apple Inc. may
-be used to endorse or promote products derived from the Apple Software
-without specific prior written permission from Apple. Except as
-expressly stated in this notice, no other rights or licenses, express or
-implied, are granted by Apple herein, including but not limited to any
-patent rights that may be infringed by your derivative works or by other
-works in which the Apple Software may be incorporated.
+ In consideration of your agreement to abide by the following terms, and
+ subject to these terms, Apple grants you a non-exclusive license, under
+ Apple's copyrights in this original Apple software (the "Apple
+ Software"), to use, reproduce, modify and redistribute the Apple
+ Software, with or without modifications, in source and/or binary forms;
+ provided that if you redistribute the Apple Software in its entirety and
+ without modifications, you must retain this notice and the following
+ text and disclaimers in all such redistributions of the Apple Software.
+ Neither the name, trademarks, service marks or logos of Apple Inc. may
+ be used to endorse or promote products derived from the Apple Software
+ without specific prior written permission from Apple. Except as
+ expressly stated in this notice, no other rights or licenses, express or
+ implied, are granted by Apple herein, including but not limited to any
+ patent rights that may be infringed by your derivative works or by other
+ works in which the Apple Software may be incorporated.
 
-The Apple Software is provided by Apple on an "AS IS" basis. APPLE MAKES
-NO WARRANTIES, EXPRESS OR IMPLIED, INCLUDING WITHOUT LIMITATION THE
-IMPLIED WARRANTIES OF NON-INFRINGEMENT, MERCHANTABILITY AND FITNESS FOR
-A PARTICULAR PURPOSE, REGARDING THE APPLE SOFTWARE OR ITS USE AND
-OPERATION ALONE OR IN COMBINATION WITH YOUR PRODUCTS.
+ The Apple Software is provided by Apple on an "AS IS" basis. APPLE MAKES
+ NO WARRANTIES, EXPRESS OR IMPLIED, INCLUDING WITHOUT LIMITATION THE
+ IMPLIED WARRANTIES OF NON-INFRINGEMENT, MERCHANTABILITY AND FITNESS FOR
+ A PARTICULAR PURPOSE, REGARDING THE APPLE SOFTWARE OR ITS USE AND
+ OPERATION ALONE OR IN COMBINATION WITH YOUR PRODUCTS.
 
-IN NO EVENT SHALL APPLE BE LIABLE FOR ANY SPECIAL, INDIRECT, INCIDENTAL
-OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
-SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
-INTERRUPTION) ARISING IN ANY WAY OUT OF THE USE, REPRODUCTION,
-MODIFICATION AND/OR DISTRIBUTION OF THE APPLE SOFTWARE, HOWEVER CAUSED
-AND WHETHER UNDER THEORY OF CONTRACT, TORT (INCLUDING NEGLIGENCE),
-STRICT LIABILITY OR OTHERWISE, EVEN IF APPLE HAS BEEN ADVISED OF THE
-POSSIBILITY OF SUCH DAMAGE.
+ IN NO EVENT SHALL APPLE BE LIABLE FOR ANY SPECIAL, INDIRECT, INCIDENTAL
+ OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+ SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+ INTERRUPTION) ARISING IN ANY WAY OUT OF THE USE, REPRODUCTION,
+ MODIFICATION AND/OR DISTRIBUTION OF THE APPLE SOFTWARE, HOWEVER CAUSED
+ AND WHETHER UNDER THEORY OF CONTRACT, TORT (INCLUDING NEGLIGENCE),
+ STRICT LIABILITY OR OTHERWISE, EVEN IF APPLE HAS BEEN ADVISED OF THE
+ POSSIBILITY OF SUCH DAMAGE.
 
-EA1002
-5/3/2013
-*/
+ EA1002
+ 5/3/2013
+ */
 
 //
 //  UIImage.swift
@@ -108,7 +108,7 @@ public extension UIImage {
     public func applyLightEffect() -> UIImage? {
         return applyBlurWithRadius(30, tintColor: UIColor(white: 1.0, alpha: 0.3), saturationDeltaFactor: 1.8)
     }
-    
+
     public func applyExtraLightEffect() -> UIImage? {
         return applyBlurWithRadius(20, tintColor: UIColor(white: 0.97, alpha: 0.82), saturationDeltaFactor: 1.8)
     }
@@ -120,9 +120,9 @@ public extension UIImage {
     public func applyTintEffectWithColor(tintColor: UIColor) -> UIImage? {
         let effectColorAlpha: CGFloat = 0.6
         var effectColor = tintColor
-        
+
         let componentCount = CGColorGetNumberOfComponents(tintColor.CGColor)
-        
+
         if componentCount == 2 {
             var b: CGFloat = 0
             if tintColor.getWhite(&b, alpha: nil) {
@@ -132,15 +132,15 @@ public extension UIImage {
             var red: CGFloat = 0
             var green: CGFloat = 0
             var blue: CGFloat = 0
-            
+
             if tintColor.getRed(&red, green: &green, blue: &blue, alpha: nil) {
                 effectColor = UIColor(red: red, green: green, blue: blue, alpha: effectColorAlpha)
             }
         }
-        
+
         return applyBlurWithRadius(10, tintColor: effectColor, saturationDeltaFactor: -1.0, maskImage: nil)
     }
-    
+
     public func applyBlurWithRadius(blurRadius: CGFloat, tintColor: UIColor?, saturationDeltaFactor: CGFloat, maskImage: UIImage? = nil) -> UIImage? {
         // Check pre-conditions.
         if (size.width < 1 || size.height < 1) {
@@ -165,31 +165,31 @@ public extension UIImage {
         let hasSaturationChange = fabs(saturationDeltaFactor - 1.0) > __FLT_EPSILON__
 
         if hasBlur || hasSaturationChange {
-            func createEffectBuffer(context: CGContext) -> vImage_Buffer {
+            func createEffectBuffer(context: CGContext?) -> vImage_Buffer {
                 let data = CGBitmapContextGetData(context)
                 let width = vImagePixelCount(CGBitmapContextGetWidth(context))
                 let height = vImagePixelCount(CGBitmapContextGetHeight(context))
                 let rowBytes = CGBitmapContextGetBytesPerRow(context)
-                
+
                 return vImage_Buffer(data: data, height: height, width: width, rowBytes: rowBytes)
             }
-            
+
             UIGraphicsBeginImageContextWithOptions(size, false, screenScale)
             let effectInContext = UIGraphicsGetCurrentContext()
-            
+
             CGContextScaleCTM(effectInContext, 1.0, -1.0)
             CGContextTranslateCTM(effectInContext, 0, -size.height)
             CGContextDrawImage(effectInContext, imageRect, self.CGImage)
-            
+
             var effectInBuffer = createEffectBuffer(effectInContext)
 
-            
+
             UIGraphicsBeginImageContextWithOptions(size, false, screenScale)
             let effectOutContext = UIGraphicsGetCurrentContext()
-            
+
             var effectOutBuffer = createEffectBuffer(effectOutContext)
-            
-            
+
+
             if hasBlur {
                 // A description of how to compute the box kernel width from the Gaussian
                 // radius (aka standard deviation) appears in the SVG spec:
@@ -211,31 +211,31 @@ public extension UIImage {
                 }
 
                 let imageEdgeExtendFlags = vImage_Flags(kvImageEdgeExtend)
-                
+
                 vImageBoxConvolve_ARGB8888(&effectInBuffer, &effectOutBuffer, nil, 0, 0, radius, radius, nil, imageEdgeExtendFlags)
                 vImageBoxConvolve_ARGB8888(&effectOutBuffer, &effectInBuffer, nil, 0, 0, radius, radius, nil, imageEdgeExtendFlags)
                 vImageBoxConvolve_ARGB8888(&effectInBuffer, &effectOutBuffer, nil, 0, 0, radius, radius, nil, imageEdgeExtendFlags)
             }
-            
+
             var effectImageBuffersAreSwapped = false
-            
+
             if hasSaturationChange {
                 let s: CGFloat = saturationDeltaFactor
                 let floatingPointSaturationMatrix: [CGFloat] = [
                     0.0722 + 0.9278 * s,  0.0722 - 0.0722 * s,  0.0722 - 0.0722 * s,  0,
                     0.7152 - 0.7152 * s,  0.7152 + 0.2848 * s,  0.7152 - 0.7152 * s,  0,
                     0.2126 - 0.2126 * s,  0.2126 - 0.2126 * s,  0.2126 + 0.7873 * s,  0,
-                                      0,                    0,                    0,  1
+                    0,                    0,                    0,  1
                 ]
-                
+
                 let divisor: CGFloat = 256
                 let matrixSize = floatingPointSaturationMatrix.count
                 var saturationMatrix = [Int16](count: matrixSize, repeatedValue: 0)
 
-                for var i: Int = 0; i < matrixSize; ++i {
+                for i: Int in 0 ..< matrixSize {
                     saturationMatrix[i] = Int16(round(floatingPointSaturationMatrix[i] * divisor))
                 }
-                
+
                 if hasBlur {
                     vImageMatrixMultiply_ARGB8888(&effectOutBuffer, &effectInBuffer, saturationMatrix, Int32(divisor), nil, nil, vImage_Flags(kvImageNoFlags))
                     effectImageBuffersAreSwapped = true
@@ -243,29 +243,29 @@ public extension UIImage {
                     vImageMatrixMultiply_ARGB8888(&effectInBuffer, &effectOutBuffer, saturationMatrix, Int32(divisor), nil, nil, vImage_Flags(kvImageNoFlags))
                 }
             }
-            
+
             if !effectImageBuffersAreSwapped {
                 effectImage = UIGraphicsGetImageFromCurrentImageContext()
             }
-            
+
             UIGraphicsEndImageContext()
-            
+
             if effectImageBuffersAreSwapped {
                 effectImage = UIGraphicsGetImageFromCurrentImageContext()
             }
-            
+
             UIGraphicsEndImageContext()
         }
-        
+
         // Set up output context.
         UIGraphicsBeginImageContextWithOptions(size, false, screenScale)
         let outputContext = UIGraphicsGetCurrentContext()
         CGContextScaleCTM(outputContext, 1.0, -1.0)
         CGContextTranslateCTM(outputContext, 0, -size.height)
-        
+
         // Draw base image.
         CGContextDrawImage(outputContext, imageRect, self.CGImage)
-        
+
         // Draw effect image.
         if hasBlur {
             CGContextSaveGState(outputContext)
@@ -275,7 +275,7 @@ public extension UIImage {
             CGContextDrawImage(outputContext, imageRect, effectImage.CGImage)
             CGContextRestoreGState(outputContext)
         }
-        
+
         // Add in color tint.
         if let color = tintColor {
             CGContextSaveGState(outputContext)
