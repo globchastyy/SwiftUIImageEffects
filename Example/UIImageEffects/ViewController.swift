@@ -22,7 +22,7 @@ class ViewController: UIViewController {
         updateImage()
     }
 
-    @IBAction func updateImage(sender: UITapGestureRecognizer? = nil) {
+    @IBAction func updateImage(_ sender: UITapGestureRecognizer? = nil) {
         if (imageIndex > 4) {
             imageIndex = 0
         }
@@ -31,23 +31,23 @@ class ViewController: UIViewController {
         case 0:
             imageView.image = image
             effectLabel.text = "None"
-            effectLabel.textColor = UIColor.whiteColor()
+            effectLabel.textColor = UIColor.white
         case 1:
             imageView.image = image.applyLightEffect()
             effectLabel.text = "Light"
-            effectLabel.textColor = UIColor.whiteColor()
+            effectLabel.textColor = UIColor.white
         case 2:
             imageView.image = image.applyExtraLightEffect()
             effectLabel.text = "Extra light"
-            effectLabel.textColor = UIColor.lightGrayColor()
+            effectLabel.textColor = UIColor.lightGray
         case 3:
             imageView.image = image.applyDarkEffect()
             effectLabel.text = "Dark"
-            effectLabel.textColor = UIColor.darkGrayColor()
+            effectLabel.textColor = UIColor.darkGray
         case 4:
-            imageView.image = image.applyTintEffectWithColor(UIColor.blueColor())
+            imageView.image = image.applyTintEffectWithColor(UIColor.blue)
             effectLabel.text = "Color tint"
-            self.effectLabel.textColor = UIColor.darkGrayColor()
+            self.effectLabel.textColor = UIColor.darkGray
         default:
             break
         }
