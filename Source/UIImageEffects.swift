@@ -183,12 +183,10 @@ public extension UIImage {
 
             var effectInBuffer = createEffectBuffer(effectInContext)
 
-
             UIGraphicsBeginImageContextWithOptions(size, false, screenScale)
 
             guard let effectOutContext = UIGraphicsGetCurrentContext() else { return  nil }
             var effectOutBuffer = createEffectBuffer(effectOutContext)
-
 
             if hasBlur {
                 // A description of how to compute the box kernel width from the Gaussian
@@ -226,7 +224,7 @@ public extension UIImage {
                     0.0722 + 0.9278 * s,  0.0722 - 0.0722 * s,  0.0722 - 0.0722 * s,  0,
                     0.7152 - 0.7152 * s,  0.7152 + 0.2848 * s,  0.7152 - 0.7152 * s,  0,
                     0.2126 - 0.2126 * s,  0.2126 - 0.2126 * s,  0.2126 + 0.7873 * s,  0,
-                    0,                    0,                    0,  1
+                    0,                    0,                    0,                    1
                 ]
 
                 let divisor: CGFloat = 256
