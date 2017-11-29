@@ -151,14 +151,14 @@ public extension UIImage {
             print("*** error: image must be backed by a CGImage: \(self)")
             return nil
         }
-        if maskImage != nil && maskImage!.cgImage == nil {
+        guard let maskCGImage = maskImage?.cgImage else {
             print("*** error: maskImage must be backed by a CGImage: \(String(describing: maskImage))")
             return nil
         }
 
-        let __FLT_EPSILON__ = CGFloat(Float.ulpOfOne)
+        let __FLT_EPSILON__ = CGFloat.ulpOfOne
         let screenScale = UIScreen.main.scale
-        let imageRect = CGRect(origin: CGPoint.zero, size: size)
+        let imageRect = CGRect(origin: .zero, size: size)
         var effectImage = self
 
         let hasBlur = blurRadius > __FLT_EPSILON__
@@ -272,9 +272,7 @@ public extension UIImage {
         // Draw effect image.
         if hasBlur {
             outputContext.saveGState()
-            if let maskCGImage = maskImage?.cgImage {
-                outputContext.clip(to: imageRect, mask: maskCGImage);
-            }
+            outputContext.clip(to: imageRect, mask: maskCGImage);
             outputContext.draw(effectImage.cgImage!, in: imageRect)
             outputContext.restoreGState()
         }
